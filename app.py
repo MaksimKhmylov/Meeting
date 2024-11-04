@@ -1,11 +1,37 @@
 from flask import Flask, render_template
-import datetime as date
+from datetime import date
+
 app = Flask(__name__)
+
+def calculate_age(born):
+    today = date.today()
+    return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+
+data = {
+    'name': 'Максим Хмылов',
+    'age': calculate_age(date(2010, 10, 28)),
+    'games': (('https://pyfy-games.itch.io/the-core', 'the core'),),
+    'profession': 'Программист',
+    'place': 'Россия, Дмитров',
+    'languages': (('Русский', 70),('Английский', 45),('Немецкий', 3)),
+    'description': 'Это д/з по программированию, потому-что мы изучаем сайтики. А еще мне не хочеться что-то придумывать',
+    'education': (
+                     (
+                         'Английский','До уровня В2', 'Уже на протяжениии 6 лет я занимался Английским'
+                     ),
+                     (
+                         'Программирование','До Марта 2025','Этот сайт - домашка по этому доп. занятию'
+                     ),
+                     (
+                         'Школа','До 11 класса', 'Я хочу дойти до 11, меня все устраивает'
+                     )
+                 )
+}
 
 @app.route('/')
 def index():
-    age = date.datetime.now().year-2010 if date.datetime.now().month >= 10 else date.datetime.now().year-2010-1
-    return render_template('index.html', age=age)
+    age = calculate_age(date(2010, 10, 28))
+    return render_template('index.html',data=data)
 
 if __name__ == '__main__':
     app.run(debug=True)

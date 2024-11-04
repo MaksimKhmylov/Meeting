@@ -1,0 +1,30 @@
+<!-- Left Column -->
+    <div class="w3-third">
+
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src="{{ url_for('static', filename='images/avatar.png') }}" style="width:100%" alt="Avatar">
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+          </div>
+        </div>
+        <h2>{{data.name}}</h2>
+        <div class="w3-container">
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>{{data.profession}}</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{data.place}}</p>
+          <p><i class="	fa fa-address-book-o fa-fw w3-margin-right w3-large w3-text-teal"></i>{{data.age}} лет</p>
+          <hr>
+
+
+          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Говорю на</b></p>
+          {%for language in data.languages%}
+          <p>{{language[0]}}</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-round-xlarge w3-teal" style="height:24px;width:{{language[1]}}%"></div>
+          </div>
+          {%endfor%}
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
