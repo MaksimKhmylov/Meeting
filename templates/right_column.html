@@ -1,22 +1,28 @@
-    <!-- Right Column -->
-    <div class="w3-twothird">
+<!-- Right Column -->
+<div class="w3-twothird">
 
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Обо мне</h2>
-          <p>{{data.description}}</p>
-      </div>
+  <div class="w3-container w3-card w3-white w3-margin-bottom">
+    <h2 class="w3-text-grey w3-padding-16">
+      <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
+      Обо мне
+    </h2>
+    <p>{{ data.description }}</p>
+  </div>
 
-      <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Учеба</h2>
-        {%for lesson in data.education%}
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>{{lesson[0]}} - <span class="w3-tag w3-teal w3-round">Сейчас</span> </b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{lesson[1]}}</h6>
-          <p>{{lesson[2]}}</p>
-          <hr>
-        </div>
-        {%endfor%}
-      </div>
+  <div class="w3-container w3-card w3-white">
+    <h2 class="w3-text-grey w3-padding-16">
+      <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Учеба
+    </h2>
 
-    <!-- End Right Column -->
+    {% for class_name, time_to, description, status in data.education %}
+    <div class="w3-container">
+      <h5 class="w3-opacity"><b>{{ class_name }} - <span class="w3-tag w3-teal w3-round">{{ status }}</span> </b></h5>
+      <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{ time_to }}</h6>
+      <p>{{ description }}</p>
+      <hr>
     </div>
+    {% endfor %}
+  </div>
+
+<!-- End Right Column -->
+</div>
